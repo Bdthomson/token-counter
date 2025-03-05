@@ -44,6 +44,25 @@ Basic usage:
 
 If no path is provided, the current directory will be analyzed.
 
+```
+➜  token-counter git:(main) token-counter
+Processing directory: /code/token-counter
+Respecting .gitignore rules if present
+Token Count Summary for: /code/token-counter
+Total tokens in repository: 5510
+
+Directories (sorted by token count):
+----------------------------------
+/code/token-counter: 4561 tokens
+  |- main.go: 2596 tokens
+  |- README.md: 1028 tokens
+  |- go.sum: 858 tokens
+  |- go.mod: 79 tokens
+
+/code/token-counter/tests: 949 tokens
+  |- tests/lorem-ipsum.txt: 949 tokens
+```
+
 ### Command Line Options
 
 | Flag | Default | Description |
