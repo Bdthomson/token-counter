@@ -4,7 +4,8 @@ A command-line utility for counting tokens in text files using various tokenizat
 
 ## Features
 
-- Count tokens in files and entire directories
+- Count tokens in individual files
+- Count tokens in entire directories
 - Support for different tokenization models
 - Respect .gitignore rules to skip ignored files
 - Detailed reports with token counts by directory and file
@@ -37,12 +38,13 @@ If no path is provided, the current directory will be analyzed.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `-path` | current directory | Path to the directory to analyze |
+| `-path` | current directory | Path to the directory or file to analyze |
 | `-model` | cl100k_base | Token counting model to use (e.g., cl100k_base for GPT-4) |
 | `-gitignore` | true | Whether to respect .gitignore rules |
 | `-files` | true | Whether to show individual file details |
 | `-min` | 0 | Minimum token count for a file to be included |
 | `-no-hidden` | true | Whether to ignore hidden files and directories (starting with .) |
+| `-file` | false | Explicitly treat the path as a single file rather than a directory |
 
 ### Examples
 
@@ -56,6 +58,18 @@ Count tokens in a specific directory:
 
 ```bash
 ./token-counter /path/to/project
+```
+
+Count tokens in a single file:
+
+```bash
+./token-counter /path/to/file.txt
+```
+
+Explicitly specify that the path is a file:
+
+```bash
+./token-counter -file -path /path/to/file.txt
 ```
 
 Count tokens using a different model:
@@ -90,11 +104,36 @@ Include hidden files and directories:
 
 ## Output Format
 
-The tool provides a summary of token usage including:
+The tool provides a summary of token usage:
+
+For directories:
 - Total token count for the repository
 - Token count by directory (sorted by token count)
 - Token count by file within each directory (if -files=true)
 
+For single files:
+- Total token count for the file
+
 ## License
 
-[Add your license information here]
+MIT License
+
+Copyright (c) 2023 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
