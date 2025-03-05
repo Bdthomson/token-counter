@@ -14,6 +14,15 @@ A command-line utility for counting tokens in text files using various tokenizat
 
 ## Installation
 
+### Using Pre-built Binaries
+1. Download the latest release for your platform from the [Releases page](https://github.com/bdthomson/token-counter/releases)
+2. Extract the binary (if compressed)
+3. Make it executable (on Unix-like systems):
+   ```bash
+   chmod +x token-counter-*
+   ```
+4. Optionally move it to a directory in your PATH and rename it to just `token-counter`
+
 ### From Source
 
 1. Ensure Go is installed on your system (version 1.16 or later recommended)
