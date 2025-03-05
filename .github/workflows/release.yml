@@ -22,8 +22,8 @@ jobs:
       - name: Build binaries
         run: |
           GOOS=linux GOARCH=amd64 go build -o token-counter-linux-amd64
-          GOOS=darwin GOARCH=amd64 go build -o token-counter-darwin-amd64
-          GOOS=darwin GOARCH=arm64 go build -o token-counter-darwin-arm64
+          GOOS=darwin GOARCH=amd64 go build -o token-counter-darwin-amd64-intel
+          GOOS=darwin GOARCH=arm64 go build -o token-counter-darwin-arm64-apple
           GOOS=windows GOARCH=amd64 go build -o token-counter-windows-amd64.exe
           
       - name: Create Release
@@ -32,8 +32,8 @@ jobs:
         with:
           files: |
             token-counter-linux-amd64
-            token-counter-darwin-amd64
-            token-counter-darwin-arm64
+            token-counter-darwin-amd64-intel
+            token-counter-darwin-arm64-apple
             token-counter-windows-amd64.exe
           draft: false
           prerelease: false
