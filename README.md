@@ -22,6 +22,7 @@ A command-line utility for counting tokens in text files using various tokenizat
    chmod +x token-counter-*
    ```
 4. Optionally move it to a directory in your PATH and rename it to just `token-counter`
+5. If you're on MacOS and you try running this, you'll get an error saying the app isn't sign. You can quarantine the app with `xattr -d com.apple.quarantine /usr/local/bin/token-counter` and then run it again. Or you can follow the instructions below to build the binary yourself.
 
 ### From Source
 
