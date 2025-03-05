@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.24'
+          
+      - name: Build binaries
+        run: |
+          GOOS=linux GOARCH=amd64 go build -o token-counter-linux-amd64
+          GOOS=darwin GOARCH=amd64 go build -o token-counter-darwin-amd64
+          GOOS=darwin GOARCH=arm64 go build -o token-counter-darwin-arm64
+          GOOS=windows GOARCH=amd64 go build -o token-counter-windows-amd64.exe
+          
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            token-counter-linux-amd64
+            token-counter-darwin-amd64
+            token-counter-darwin-arm64
+            token-counter-windows-amd64.exe
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
